@@ -40,14 +40,16 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/apis': {  //将www.exaple.com印射为/apis
-        target: 'https://easy-mock.com/mock/5a0505f33ee7f615fd560b73/example_1510153908343_1510278643389/home', // 接口域名
+        //target: 'https://easy-mock.com/mock/5a0505f33ee7f615fd560b73/example_1510153908343_1510278643389/home', // 接口域名
+        target:'http://127.0.0.1:9088',
         changeOrigin: true, //是否跨域
         pathRewrite: {
           '^/apis': ''  //需要rewrite的,
         }   
       },
       '/base': { /* 当发生跨域请求是调用此接口 本地代理*/
-        target: 'https://api.douban.com/v2/event/list?loc=108288&start=1&count=3',
+        //target: 'https://api.douban.com/v2/event/list?loc=108288&start=1&count=3',
+        target:'http://127.0.0.1:9088',
         changeOrigin: true,
         pathRewrite: {
           '^/base': '/base'

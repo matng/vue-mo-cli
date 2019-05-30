@@ -198,9 +198,17 @@ export default {
           })
         } else {
           this.getProData()
-          window.localStorage.setItem('userMobile', this.userMobile)
+          /*window.localStorage.setItem('userMobile', this.userMobile)
           window.localStorage.setItem('userName', this.userName)
-          window.localStorage.setItem('addressDetail', this.addressDetail)
+          window.localStorage.setItem('addressDetail', this.addressDetail)*/
+          this.$http.post("/base/sell/api/lottery/create",{
+            'name': this.userName,
+            'mobile': this.userMobile,
+            'commodityName': this.lotteryName
+          }).then((respones) => {
+            respones = respones.body;
+            console.log(respones);
+          });
           Toast({
             message: '领取成功',
             position: 'middle',

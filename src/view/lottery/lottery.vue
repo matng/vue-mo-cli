@@ -185,10 +185,12 @@ export default {
   methods: {
 
     get () {
-      this.$http.get('../../../static/data/lotteryInfo.json').then((myData) => {
+      //this.$http.get('../../../static/data/lotteryInfo.json').then((myData) => {
+      this.$http.get('/apis/sell/api/lottery/list?openid=123').then((myData) => {
         // console.log(myData)
         let res = myData.data
         if (res.success) {
+          res.data = res.data[0]
           document.title = res.data.title
           this.remainingTimes = res.data.remainingTimes
           this.hasRecord = res.data.hasDrawed
